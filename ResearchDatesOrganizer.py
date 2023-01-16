@@ -25,7 +25,7 @@ def import_data():
     # Combine the sheets together and return single dataframe
     data = pd.concat([df1, df2, df3, df4], axis = 1)
     
-    # Combine dublicate columns into one
+    # Combine dublicate columns into one        
     def sjoin(x): return ';'.join(x[x.notnull()].astype(str))
     data = data.groupby(level=0, axis=1).apply(lambda x: x.apply(sjoin, axis=1))
     
@@ -116,5 +116,6 @@ def main():
     
     # Save dates to a notepad
     save_dict(dates)
-    
-main()
+
+if __name__ == '__main__':   
+    main()
